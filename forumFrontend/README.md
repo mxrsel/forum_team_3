@@ -1,1 +1,0 @@
-Jira - https://mxrsel.atlassian.net/jira/software/projects/KAN/boards/1?assignee=unassigned%2C712020%3A4caa1853-95b5-4461-8d36-e3b959eac1d8
