@@ -24,7 +24,7 @@ const UserSchema = new Schema<
       validator: async function(this: HydratedDocument<UserTypes>, value: string): Promise<boolean> {
         if(!this.isModified('username')) return true
         const user: UserTypes | null = await User.findOne({username: value});
-        return !!user;
+        return !user;
       },
       message: 'This name is already taken!'
     }
