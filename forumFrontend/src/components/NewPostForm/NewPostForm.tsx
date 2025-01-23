@@ -10,8 +10,8 @@ import {
 import { CloudUpload } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 import { selectSending } from '../../store/slices/newPostSlice';
-import { selectUser } from '../../store/slices/usersSlice';
 import { sendPost } from '../../store/thunks/newPostThunk';
+import { selectUser } from '../../store/slices/userSlice.ts';
 
 interface Data {
   title: string;
@@ -147,7 +147,6 @@ const NewPostForm = () => {
           buttonProps={{ startIcon: <CloudUpload /> }}
           onChange={handleFileInputChange}
           error={!!getFieldError('image')}
-          helperText={getFieldError('image')}
         />
         <Button type="submit" loading={sending}>
           Create post

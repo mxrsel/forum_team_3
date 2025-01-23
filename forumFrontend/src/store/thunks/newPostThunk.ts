@@ -1,8 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { PostMutation, ValidationError } from '../../types';
 import { RootState } from '../../app/store';
-import { api } from '../../api';
 import { isAxiosError } from 'axios';
+import { PostMutation, ValidationError } from '../../typed';
+import axiosAPI from '../../utils/axiosAPI.ts';
 
 export const sendPost = createAsyncThunk<
   void,
@@ -23,7 +23,7 @@ export const sendPost = createAsyncThunk<
       body.append('images', mutation.images);
     }
 
-    await api.post('posts', body, {
+    await axiosAPI.post('/posts', body, {
       headers: { Authorization: token },
     });
   } catch (e) {

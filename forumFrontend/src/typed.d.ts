@@ -34,3 +34,10 @@ export interface LoginMutation {
 export interface GlobalError {
   error: string;
 }
+
+export interface PostMutation {
+  postTitle: string;
+  postContent: string | null;
+  images: File | null;
+}
+
