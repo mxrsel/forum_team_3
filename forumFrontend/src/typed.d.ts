@@ -48,7 +48,7 @@ export interface Posts {
 
 export interface PostMutation {
   postTitle: string;
-  postContent: string;
+  postContent: string | null;
   images: File | null;
 }
 
