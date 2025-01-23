@@ -1,6 +1,5 @@
 export interface User {
   username: string;
-  _id: string;
   token: string;
 }
 
@@ -10,8 +9,8 @@ export interface RegisterMutation {
 }
 
 export interface RegisterResponse {
+  success: boolean;
   user: User;
-  message: string;
 }
 
 export interface ValidationError {
@@ -32,7 +31,10 @@ export interface LoginMutation {
 }
 
 export interface GlobalError {
-  error: string;
+  success: boolean;
+  message: {
+    [key: string]: string;
+  }
 }
 
 export interface PostMutation {

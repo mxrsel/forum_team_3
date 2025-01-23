@@ -48,10 +48,10 @@ const LoginForm = () => {
           Sign in
         </Typography>
 
-        {loginError && (
-          <Alert severity={"error"} sx={{mt: 3, width: '100%'}}>
-            {loginError.error}
-          </Alert>
+        {loginError !== null && !loginError.success && (
+            <Alert severity={"error"} sx={{mt: 3, width: '100%', justifyContent: 'center'}}>
+              {loginError.message.password ? loginError.message.password : loginError.message.username}
+            </Alert>
         )}
 
         <Box component="form" noValidate onSubmit={submitHandler} sx={{ mt: 3 }}>
