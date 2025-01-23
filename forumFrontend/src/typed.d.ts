@@ -34,3 +34,22 @@ export interface LoginMutation {
 export interface GlobalError {
   error: string;
 }
+
+export interface Posts {
+  _id: string;
+  user: string;
+  postTitle: string;
+  postContent: string;
+  postImage: string | null;
+  datetime: string;
+}
+
+export interface PostsMutation {
+  user: string;
+  postTitle: string;
+  postContent: string;
+  postImage: File | null;
+  datetime: string;
+}
+
+export type ApiPosts = Omit<PostsMutation, '_id'>;
