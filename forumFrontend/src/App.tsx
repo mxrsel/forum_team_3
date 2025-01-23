@@ -5,6 +5,9 @@ import NavBar from './components/UI/NavBar/NavBar.tsx';
 import NewPostForm from './components/NewPostForm/NewPostForm.tsx';
 import Posts from './components/Posts/Posts.tsx';
 
+import Posts from './components/Posts/Posts.tsx';
+import { Route } from 'react-router-dom';
+
 const App = () => {
     return (
         <>
@@ -28,6 +31,17 @@ const App = () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+          <Route path='/posts' element={<Posts/>} />
 
         </>
     );
