@@ -11,6 +11,7 @@ export interface Post {
   postContent: string;
   postImage: string | null;
   datetime: string;
+  commentCount?: number;
 }
 
 export interface Comment {
@@ -20,5 +21,5 @@ export interface Comment {
   commentText: string;
 }
 
-export type PostWithoutId = Omit<Post, '_id'>;
-export type CommentWithoutId = Omit<Comment, '_id'>;
+export type PostWithoutId = Omit<Post, "_id">;
+export type CommentWithoutId = Omit<Comment, "_id">;
