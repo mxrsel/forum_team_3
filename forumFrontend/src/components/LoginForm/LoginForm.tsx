@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
 import { RegisterMutation } from '../../typed';
-import { Avatar, Box, Button, Container, Link, TextField, Typography } from '@mui/material';
+import { Alert, Avatar, Box, Button, Container, Link, TextField, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import Person2Icon from '@mui/icons-material/Person2';
 import { useAppDispatch, useAppSelector } from '../../app/hooks.ts';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { selectRegisterError, selectRegisterLoading } from '../../store/slices/userSlice.ts';
-import { register } from '../../store/thunks/userThunk.ts';
+import { selectLoginError, selectLoginLoading } from '../../store/slices/userSlice.ts';
+import { login } from '../../store/thunks/userThunk.ts';
 
 const initialState = {
   username: '',
   password: '',
 }
 
-const RegisterForm = () => {
+const LoginForm = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const registerError = useAppSelector(selectRegisterError);
-  const registerLoading = useAppSelector(selectRegisterLoading);
+  const loginError = useAppSelector(selectLoginError);
+  const loginLoading = useAppSelector(selectLoginLoading);
   const [form, setForm] = useState<RegisterMutation>(initialState);
 
   const inputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,21 +27,8 @@ const RegisterForm = () => {
 
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
-    try {
-      await dispatch(register(form)).unwrap();
-      setForm(initialState);
-      navigate('/');
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
-  const getFieldError = (fieldName: string) => {
-    try {
-      return registerError?.errors[fieldName].message;
-    } catch {
-      return undefined;
-    }
+    await dispatch(login(form)).unwrap();
+    navigate('/');
   };
 
   return (
@@ -55,11 +42,18 @@ const RegisterForm = () => {
         }}
       >
         <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-          <PersonAddIcon />
+          <Person2Icon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Sign up
+          Sign in
         </Typography>
+
+        {loginError && (
+          <Alert severity={"error"} sx={{mt: 3, width: '100%'}}>
+            {loginError.error}
+          </Alert>
+        )}
+
         <Box component="form" noValidate onSubmit={submitHandler} sx={{ mt: 3 }}>
           <Grid container direction={'column'} size={12} spacing={2}>
             <Grid size={12}>
@@ -71,8 +65,6 @@ const RegisterForm = () => {
                 name="username"
                 value={form.username}
                 onChange={inputChangeHandler}
-                error={Boolean(getFieldError('username'))}
-                helperText={getFieldError('username')}
               />
             </Grid>
             <Grid size={12}>
@@ -85,24 +77,22 @@ const RegisterForm = () => {
                 id="password"
                 value={form.password}
                 onChange={inputChangeHandler}
-                error={Boolean(getFieldError('password'))}
-                helperText={getFieldError('password')}
               />
             </Grid>
           </Grid>
           <Button
             type="submit"
-            loading={registerLoading}
+            loading={loginLoading}
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
-            Sign Up
+            Sign in
           </Button>
           <Grid container justifyContent="center">
             <Grid>
-              <Link variant="body2" component={NavLink} to='/login'>
-                Already have an account? Sign in
+              <Link variant="body2" component={NavLink} to='/register'>
+                Don't have an account? Sign Up
               </Link>
             </Grid>
           </Grid>
@@ -112,4 +102,4 @@ const RegisterForm = () => {
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
