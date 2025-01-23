@@ -91,8 +91,8 @@ const NewPostForm = () => {
     if (!data.description && !data.image) {
       setError((error) => ({
         ...error,
-        description: 'Either description, or image, or both are required.',
-        image: 'Either description, or image, or both are required.',
+        description: 'Description, or image, or both are required.',
+        image: 'Description, or image, or both are required.',
       }));
 
       exiting = true;
@@ -147,6 +147,7 @@ const NewPostForm = () => {
           buttonProps={{ startIcon: <CloudUpload /> }}
           onChange={handleFileInputChange}
           error={!!getFieldError('image')}
+          helperText={getFieldError('description')}
         />
         <Button type="submit" loading={sending}>
           Create post

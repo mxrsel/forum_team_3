@@ -1,11 +1,6 @@
 import { ChangeEventHandler, FC, useState } from 'react';
 
-import {
-  Button,
-  ButtonProps,
-  OutlinedInput,
-  OutlinedInputProps,
-} from '@mui/material';
+import { Button, ButtonProps, TextField, TextFieldProps } from '@mui/material';
 
 interface Props {
   onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -14,7 +9,7 @@ interface Props {
   buttonText: string;
 }
 
-const FileInput: FC<OutlinedInputProps & Props> = ({
+const FileInput: FC<TextFieldProps & Props> = ({
   buttonProps,
   buttonText,
   multiple,
@@ -37,31 +32,38 @@ const FileInput: FC<OutlinedInputProps & Props> = ({
   };
 
   return (
-    <OutlinedInput
+    <TextField
       disabled
       value={filenames.join(', ')}
-      placeholder={multiple ? 'Файлы не выбраны' : 'Файл не выбран'}
       {...attributes}
-      sx={{ pr: 0 }}
-      endAdornment={
-        <Button
-          disableElevation
-          component="label"
-          role={undefined}
-          variant="contained"
-          tabIndex={-1}
-          {...buttonProps}
-        >
-          {buttonText}
-          <input
-            hidden
-            type="file"
-            name={name}
-            onChange={handleChange}
-            multiple={multiple}
-          />
-        </Button>
-      }
+      sx={{
+        '& .MuiInputBase-root': {
+          pr: 0,
+        },
+      }}
+      slotProps={{
+        input: {
+          endAdornment: (
+            <Button
+              disableElevation
+              component="label"
+              role={undefined}
+              variant="contained"
+              tabIndex={-1}
+              {...buttonProps}
+            >
+              {buttonText}
+              <input
+                hidden
+                type="file"
+                name={name}
+                onChange={handleChange}
+                multiple={multiple}
+              />
+            </Button>
+          ),
+        },
+      }}
     />
   );
 };
