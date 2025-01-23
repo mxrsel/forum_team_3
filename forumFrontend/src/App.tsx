@@ -5,46 +5,21 @@ import NavBar from './components/UI/NavBar/NavBar.tsx';
 import NewPostForm from './components/NewPostForm/NewPostForm.tsx';
 import Posts from './components/Posts/Posts.tsx';
 
-import Posts from './components/Posts/Posts.tsx';
-import { Route } from 'react-router-dom';
-
 const App = () => {
-    return (
-        <>
-          <header>
-            <NavBar/>
-          </header>
-          <Routes>
-            <Route path="/register" element={<RegisterForm/>}/>
-            <Route path="/login" element={<LoginForm/>}/>
-            <Route path="/add-post" element={<NewPostForm/>}/>
-            <Route path='/posts' element={<Posts/>} />
-          </Routes>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <Route path='/posts' element={<Posts/>} />
-
-        </>
-    );
+  return (
+    <>
+      <header>
+        <NavBar />
+      </header>
+      <Routes>
+        <Route path="/" element={<Posts />} />
+        <Route path="/register" element={<RegisterForm />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/add-post" element={<NewPostForm />} />
+        <Route path="/posts" element={<Posts />} />
+      </Routes>
+    </>
+  );
 };
 
 export default App;

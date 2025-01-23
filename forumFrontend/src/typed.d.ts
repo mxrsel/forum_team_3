@@ -18,8 +18,8 @@ export interface ValidationError {
     [key: string]: {
       name: string;
       message: string;
-    }
-  },
+    };
+  };
   message: string;
   name: string;
   _message: string;
@@ -34,7 +34,7 @@ export interface GlobalError {
   success: boolean;
   message: {
     [key: string]: string;
-  }
+  };
 }
 
 export interface Posts {
@@ -46,15 +46,10 @@ export interface Posts {
   datetime: string;
 }
 
-export interface PostsMutation {
-  user: string;
+export interface PostMutation {
   postTitle: string;
   postContent: string;
-  postImage: File | null;
-  datetime: string;
+  images: File | null;
 }
 
-export type ApiPosts = Omit<PostsMutation, '_id'>;
-
-
-
+export type ApiPosts = Omit<Posts, '_id'>;
