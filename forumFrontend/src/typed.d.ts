@@ -37,9 +37,24 @@ export interface GlobalError {
   }
 }
 
-export interface PostMutation {
+export interface Posts {
+  _id: string;
+  user: string;
   postTitle: string;
-  postContent: string | null;
-  images: File | null;
+  postContent: string;
+  postImage: string | null;
+  datetime: string;
 }
+
+export interface PostsMutation {
+  user: string;
+  postTitle: string;
+  postContent: string;
+  postImage: File | null;
+  datetime: string;
+}
+
+export type ApiPosts = Omit<PostsMutation, '_id'>;
+
+
 
