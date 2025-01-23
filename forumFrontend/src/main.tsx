@@ -1,5 +1,4 @@
 import { createRoot } from "react-dom/client";
-import "./index.css";
 import App from "./App.tsx";
 import "@fontsource/roboto/cyrillic.css";
 import { persistor, store } from './app/store.ts';
