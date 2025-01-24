@@ -53,4 +53,5 @@ export interface PostMutation {
   images: File | null;
 }
 
-export type ApiPosts = Omit<Posts, '_id'>;
+
+
