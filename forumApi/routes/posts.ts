@@ -60,6 +60,7 @@ postsRouter.get("/", async (req, res, next) => {
             _id: "$_id",
             user: "$user",
             postTitle: "$postTitle",
+            postContent: "$postContent",
             postImage: "$postImage",
             datetime: "$datetime",
           },
@@ -77,6 +78,15 @@ postsRouter.get("/", async (req, res, next) => {
             field: "postTitle",
             input: "$$ROOT",
             value: "$_id.postTitle",
+          },
+        },
+      },
+      {
+        $replaceWith: {
+          $setField: {
+            field: "postContent",
+            input: "$$ROOT",
+            value: "$_id.postContent",
           },
         },
       },
