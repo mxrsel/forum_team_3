@@ -41,6 +41,7 @@ export interface Posts {
   _id: string;
   user: string;
   postTitle: string;
+  commentCount: number;
   postContent: string;
   postImage: string | null;
   datetime: string;
