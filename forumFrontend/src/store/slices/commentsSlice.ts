@@ -16,6 +16,7 @@ const initialState: CommentsSliceProps = {
 }
 
 export const selectorComments = (state: RootState) => state.comments.comments
+export const selectorCommentsLoading = (state: RootState) => state.comments.commentLoading
 
 const commentsSlice = createSlice({
   name: "comments",

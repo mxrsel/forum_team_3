@@ -1,6 +1,6 @@
 import React from 'react';
 import Grid from '@mui/material/Grid2';
-import { Box, Typography } from '@mui/material';
+import { Box, Divider, Typography } from '@mui/material';
 import { Posts } from '../../typed';
 import dayjs from 'dayjs';
 
@@ -15,11 +15,12 @@ const FullPostItem: React.FC<Props> = ({fullPost}) => {
   return (
     <Grid container direction='column'>
       <Box>
-      <Typography>
-        {fullPost.user} - added {dayjs(fullPost.datetime).format('MMMM D, YYYY hh:mm')}
-      </Typography>
+        <Typography variant="overline" color="text.secondary" sx={{ marginBottom: 1 }}>
+          {dayjs(fullPost.datetime).format('MMMM D, YYYY hh:mm')} by {fullPost.user}
+        </Typography>
       </Box>
-      <Typography variant='h4' style={{marginBottom: 4}}>
+      <Divider sx={{ mb: 1, mt: 1 }} />
+      <Typography variant='h4' style={{marginBottom: 4}} textAlign="center">
         {fullPost.postTitle}
       </Typography>
       {fullPost.postImage && (
@@ -27,7 +28,8 @@ const FullPostItem: React.FC<Props> = ({fullPost}) => {
           component="img"
           sx={{
             width: '100%',
-            maxHeight: 400,
+            maxHeight: 250,
+            objectFit: 'contain',
             borderRadius: 2
           }}
           src={`${apiURL}/public/${fullPost.postImage}`}

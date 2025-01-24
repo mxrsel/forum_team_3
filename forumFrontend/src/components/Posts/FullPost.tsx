@@ -9,8 +9,8 @@ import { getPostById } from '../../store/thunks/postsThunk.ts';
 import Loader from '../UI/Loader.tsx';
 import FullPostItem from './FullPostItem.tsx';
 import { getAllPostComments } from '../../store/thunks/commentsThunk.ts';
-import { Box, Container, Stack, Typography } from '@mui/material';
-import { selectorComments } from '../../store/slices/commentsSlice.ts';
+import { Box, Container, Divider, Stack, Typography } from '@mui/material';
+import { selectorComments, selectorCommentsLoading } from '../../store/slices/commentsSlice.ts';
 import CommentsItem from '../Comments/CommentsItem.tsx';
 import { selectUser } from '../../store/slices/userSlice.ts';
 import NewCommentForm from '../NewCommentForm/NewCommentForm.tsx';
@@ -22,6 +22,7 @@ const FullPost = () => {
   const fullPost = useAppSelector(selectOnePost);
   const comments = useAppSelector(selectorComments);
   const loading = useAppSelector(selectPostsLoading);
+  const commentsLoading = useAppSelector(selectorCommentsLoading);
 
   useEffect(() => {
     if (!postId) {
@@ -42,13 +43,22 @@ const FullPost = () => {
         ) : (
           <>
             <FullPostItem key={fullPost._id} fullPost={fullPost} />
-            <Typography variant="h4" gutterBottom>
+            <Divider sx={{ mb: 1, mt: 1 }} />
+            <Typography variant="h5" gutterBottom textAlign="center">
               Comments:
             </Typography>
             <Stack mx="auto" maxWidth={800} gap={1} alignItems="stretch">
-              {comments.map((comment) => (
-                <CommentsItem key={comment._id} comments={comment} />
-              ))}
+              {commentsLoading ? (
+                <Loader open={commentsLoading} />
+              ) : (!comments || comments.length === 0) ? (
+                <Typography variant="h6" align="center" sx={{ mt: 2 }}>
+                  No comments yet
+                </Typography>
+              ) : (
+                comments.map((comment) => (
+                  <CommentsItem key={comment._id} comments={comment} />
+                ))
+              )}
             </Stack>
             {user && (
               <Box mx="auto" mt={2} maxWidth={800}>
