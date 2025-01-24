@@ -4,6 +4,7 @@ import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, R
 import { usersReducer } from '../store/slices/userSlice.ts';
 import {newPostReducer} from "../store/slices/newPostSlice.ts";
 import { postsReducer } from '../store/slices/postsSlice.ts';
+import { commentsReducer } from '../store/slices/commentsSlice.ts';
 
 
 const usersPersistConfig = {
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   users: persistReducer(usersPersistConfig, usersReducer),
   posts: postsReducer,
   newPost: newPostReducer,
+  comments: commentsReducer,
 });
 
 export const store = configureStore({

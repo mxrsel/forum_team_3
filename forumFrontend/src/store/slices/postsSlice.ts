@@ -1,11 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { ApiPosts, Posts } from '../../typed';
+import {  Posts } from '../../typed';
 import { getAllPosts, getPostById } from '../thunks/postsThunk.ts';
 import { RootState } from '../../app/store.ts';
 
 interface PostsSliceProps {
   posts: Posts[];
-  onePost: ApiPosts | null;
+  onePost: Posts | null;
   isPostsLoading: boolean;
   isPostsError: boolean;
 }
@@ -52,7 +52,7 @@ const postsSlice = createSlice({
         }
       )
       .addCase(
-        getPostById.fulfilled, (state, action: PayloadAction<ApiPosts | null>) => {
+        getPostById.fulfilled, (state, action: PayloadAction<Posts | null>) => {
           state.isPostsLoading = false;
           state.onePost = action.payload;
         }

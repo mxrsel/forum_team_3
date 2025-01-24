@@ -47,11 +47,17 @@ export interface Posts {
   datetime: string;
 }
 
-export interface PostMutation {
+export interface PostsMutation {
   postTitle: string;
   postContent: string | null;
   images: File | null;
 }
 
+export interface Comment {
+  _id: string;
+  user: string;
+  post: string;
+  commentText: string;
+}
 
 

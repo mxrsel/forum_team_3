@@ -17,7 +17,7 @@ const PostsItem: React.FC<PostItemProps> = ({post}) => {
 
   return (
     <Grid size={12}>
-      <NavLink to={`/products/${post._id}`} style={{ textDecoration: 'none' }}>
+      <NavLink to={`/posts/${post._id}`} style={{ textDecoration: 'none' }}>
         <Card sx={{ display: 'flex', flexDirection: 'row', maxWidth: 800, margin: 'auto', borderRadius: 2, boxShadow: 3 }}>
           {post.postImage ? (
             <CardMedia

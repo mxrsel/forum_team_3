@@ -17,8 +17,8 @@ export const sendPost = createAsyncThunk<
     body.append('postContent', mutation.postContent);
   }
 
-  if (mutation.postImage) {
-    body.append('images', mutation.postImage);
+  if (mutation.images) {
+    body.append('images', mutation.images);
   }
 
   await axiosAPI.post('/posts', body, {
