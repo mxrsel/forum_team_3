@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from '../../app/store';
-import { PostMutation } from '../../typed';
+import { PostsMutation } from '../../typed';
 import axiosAPI from '../../utils/axiosAPI.ts';
 
 export const sendPost = createAsyncThunk<
   void,
-  PostMutation,
+  PostsMutation,
   { state: RootState }
 >('newPost/sendPost', async (mutation, { getState }) => {
   const token = getState().users.user?.token;
@@ -17,8 +17,8 @@ export const sendPost = createAsyncThunk<
     body.append('postContent', mutation.postContent);
   }
 
-  if (mutation.images) {
-    body.append('images', mutation.images);
+  if (mutation.postImage) {
+    body.append('images', mutation.postImage);
   }
 
   await axiosAPI.post('/posts', body, {

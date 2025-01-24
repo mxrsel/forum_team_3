@@ -22,7 +22,7 @@ const PostsItem: React.FC<PostItemProps> = ({post}) => {
 
   return (
     <Grid style={{alignItems: 'center'}}>
-      <NavLink to={`/products/${post._id}`}>
+      <NavLink to={`/posts/${post._id}`}>
         <Card>
           <CardContent>
             <CardMedia

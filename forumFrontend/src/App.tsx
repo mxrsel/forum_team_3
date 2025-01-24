@@ -4,9 +4,7 @@ import RegisterForm from './components/RegisterForm/RegisterForm.tsx';
 import NavBar from './components/UI/NavBar/NavBar.tsx';
 import NewPostForm from './components/NewPostForm/NewPostForm.tsx';
 import Posts from './components/Posts/Posts.tsx';
-
-import Posts from './components/Posts/Posts.tsx';
-import { Route } from 'react-router-dom';
+import FullPost from './components/Posts/FullPost.tsx';
 
 const App = () => {
     return (
@@ -19,30 +17,8 @@ const App = () => {
             <Route path="/login" element={<LoginForm/>}/>
             <Route path="/add-post" element={<NewPostForm/>}/>
             <Route path='/posts' element={<Posts/>} />
+            <Route path='/posts/:postId' element={<FullPost/>}/>
           </Routes>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <Route path='/posts' element={<Posts/>} />
-
         </>
     );
 };

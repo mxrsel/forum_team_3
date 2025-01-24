@@ -54,7 +54,5 @@ export interface PostsMutation {
   datetime: string;
 }
 
-export type ApiPosts = Omit<PostsMutation, '_id'>;
-
 
 

@@ -18,6 +18,7 @@ const initialState: PostsSliceProps = {
 }
 
 export const selectPostsItem = (state: RootState) => state.posts.posts;
+export const selectOnePost = (state:RootState) => state.posts.onePost;
 export const selectPostsLoading = (state: RootState) => state.posts.isPostsLoading;
 
 const postsSlice = createSlice({
