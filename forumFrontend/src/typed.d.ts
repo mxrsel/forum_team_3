@@ -60,4 +60,4 @@ export interface Comment {
   commentText: string;
 }
 
-
+export type CommentMutation = Omit<Comment, '_id' | 'user' | 'post'>;

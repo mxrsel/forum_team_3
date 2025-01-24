@@ -3,8 +3,6 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks.ts';
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import { selectSending } from '../../store/slices/newCommentSlice.ts';
 
-import { selectPost } from '../../store/slices/commentSlice';
-import { Posts } from '../../typed';
 import { sendComment } from '../../store/thunks/newCommentThunk.ts';
 import SendIcon from '@mui/icons-material/Send';
 
@@ -24,7 +22,6 @@ const NewCommentForm = () => {
   const dispatch = useAppDispatch();
 
   const sending = useAppSelector(selectSending);
-  const post: Posts = useAppSelector(selectPost);
 
   const [data, setData] = useState<Data>(initialData);
 
@@ -58,7 +55,6 @@ const NewCommentForm = () => {
     try {
       await dispatch(
         sendComment({
-          post: post._id,
           commentText: data.text,
         })
       ).unwrap();
@@ -70,35 +66,29 @@ const NewCommentForm = () => {
   };
 
   return (
-    <Box maxWidth="sm" p={2}>
-      <form onSubmit={handleSubmit}>
-        <TextField
-          fullWidth
-          label="Text"
-          name="text"
-          required
-          multiline
-          minRows={2}
-          value={data.text}
-          onChange={handleChange}
-          error={!!getFieldError('text')}
-          helperText={getFieldError('text')}
-          slotProps={{
-            input: {
-              endAdornment: (
-                <IconButton
-                  type="submit"
-                  aria-label="comment"
-                  loading={sending}
-                >
-                  <SendIcon />
-                </IconButton>
-              ),
-            },
-          }}
-        />
-      </form>
-    </Box>
+    <form onSubmit={handleSubmit}>
+      <TextField
+        fullWidth
+        name="text"
+        placeholder="Share your thoughts"
+        required
+        multiline
+        minRows={2}
+        value={data.text}
+        onChange={handleChange}
+        error={!!getFieldError('text')}
+        helperText={getFieldError('text')}
+        slotProps={{
+          input: {
+            endAdornment: (
+              <IconButton type="submit" aria-label="comment" loading={sending}>
+                <SendIcon />
+              </IconButton>
+            ),
+          },
+        }}
+      />
+    </form>
   );
 };
 
