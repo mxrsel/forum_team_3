@@ -32,7 +32,7 @@ postsRouter.post(
         user: user._id,
         postTitle,
         postContent,
-        postImage: req.file ? req.file.filename : null,
+        postImage: req.file ? `images/${req.file.filename}` : null,
       });
 
       res.status(200).send({ success: true, post: post });

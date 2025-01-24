@@ -17,7 +17,7 @@ const Posts = () => {
   }, [dispatch]);
 
   return (
-    <Grid>
+    <Grid container spacing={2}>
       {loading ? (
         <Loader open={loading}/>
       ) : (
