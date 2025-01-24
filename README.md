@@ -15,12 +15,12 @@ Jira - https://mxrsel.atlassian.net/jira/software/projects/KAN/boards/1?assignee
 ### В дальнейшем перед началом работы над задачей my_new_feature:
 1. переключиться на локальную ветку dev и обновить ее до состояния удаленной
    
-   `git checkout dev
-   git pull`
+   `git checkout dev`
+
+   `git pull`
 2. создать новую ветку для работы над задачей my_new_feature
    
    `git checkout -b my_new_feature`
-3. отправить ветку задачи в репозиторий
 
 
 ### По завершении работы над задачей:
@@ -29,8 +29,9 @@ Jira - https://mxrsel.atlassian.net/jira/software/projects/KAN/boards/1?assignee
    `git push -u`
 2. переключиться на локальную ветку dev и обновить ее до состояния удаленной
  
-   `git checkout dev
-   git pull`
+   `git checkout dev`
+   
+   `git pull`
 3. объединить ветку задачи my_new_feature с веткой dev
  
    `git merge my_new_feature`
