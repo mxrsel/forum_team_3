@@ -1,4 +1,4 @@
-import { Box, IconButton, TextField } from '@mui/material';
+import { IconButton, TextField } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../app/hooks.ts';
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
 import { selectSending } from '../../store/slices/newCommentSlice.ts';

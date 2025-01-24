@@ -27,6 +27,7 @@ const commentsSlice = createSlice({
         getAllPostComments.pending, (state) => {
           state.commentLoading = true;
           state.commentsError = false;
+          state.comments = []
         }
       )
       .addCase(
